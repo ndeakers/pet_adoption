@@ -11,3 +11,7 @@ app.config['SECRET_KEY'] = "SECRET!"
 debug = DebugToolbarExtension(app)
 
 connect_db(app)
+
+@app.route('/')
+def show_homepage():
+    
