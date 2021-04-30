@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} {{ pet.pet_name }} {% endblock %}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    {% if not pet.photo_url %}
+        <img class="card-img-top" src="https://www.thehappycatsite.com/wp-content/uploads/2019/02/Cartoon-Cat-Names-long.jpg" alt="Card image cap">
+    {% else %}
+        <img class="card-img-top" src="{{ pet.photo_url }}" alt="Card image cap">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{pet.pet_name}}</h5>
+        <p class="card-text">Species: {{ pet.species }}</p>
+        <p class="card-text">Age: {{ pet.age }}</p>
+        <a href="/" class="btn btn-primary">Back to Homepage</a>
+    </div>
+</div>
+
+<form id="pet-edit-form" method="POST">
+    {{ form.hidden_tag() }}
+
+    {% for field in form
+           if field.widget.input_type != 'hidden' %}
+        
+        <p>
+            {{ field.label }}
+            {{ field }}
+
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </p>
+
+        {% endfor %}
+        <button class="btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

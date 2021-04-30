@@ -4,17 +4,21 @@
 
 {% for pet in pets %}
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{ pet.photo_url }}" alt="Card image cap">
+    {% if not pet.photo_url %}
+        <img class="card-img-top" src="https://www.thehappycatsite.com/wp-content/uploads/2019/02/Cartoon-Cat-Names-long.jpg" alt="Card image cap">
+    {% else %}
+        <img class="card-img-top" src="{{ pet.photo_url }}" alt="Card image cap">
+    {% endif %}
     <div class="card-body">
         {% if pet.available %}
         <h5 class="card-title">{{pet.pet_name}} is available</h5>
-        {{% else % }}
+        {% else %}
         <h5 class="card-title">{{pet.pet_name}} is not available</h5>
         {% endif %}
-        <a href="#" class="btn btn-primary">Pet Details</a>
+        <a href="/{{pet.id}}" class="btn btn-primary">Pet Details</a>
     </div>
 </div>
 {% endfor %}
-<a href="#" class="btn btn-primary">Add Pet</a>
+<a href="/add" class="btn btn-primary">Add Pet</a>
 
 {% endblock %}
