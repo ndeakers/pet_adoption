@@ -7,9 +7,9 @@
     <img class="card-img-top" src="{{ pet.photo_url }}" alt="Card image cap">
     <div class="card-body">
         {% if pet.available %}
-        <h5 class="card-title">{{pet.name}} is available</h5>
+        <h5 class="card-title">{{pet.pet_name}} is available</h5>
         {{% else % }}
-        <h5 class="card-title">{{pet.name}} is not available</h5>
+        <h5 class="card-title">{{pet.pet_name}} is not available</h5>
         {% endif %}
         <a href="#" class="btn btn-primary">Pet Details</a>
     </div>
